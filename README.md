@@ -19,5 +19,15 @@ git branch -d 分支名 //删除分支
 git checkout 分支名 //切换分支
 git checkout -b 分支名 //创建一个新的分支并切换过去
 git merge 被合并的分支名 //合并分支
+touch .gitignore //创建忽略文件，文件里编写要忽略的规则。
 ```
 
+### git忽略规则
+
+```
+#在 .gitignore中按以下规则编写
+/directory/ #过滤整个目录及子目录
+*.zip #过滤所有 .zip 文件
+/directory/file.py #过滤某个具体文件
+!index.php #不过滤某个具体文件
+```
