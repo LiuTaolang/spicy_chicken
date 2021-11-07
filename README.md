@@ -52,7 +52,7 @@ spicy chicken是个独立的软件，点开以后图形界面展示菜单栏和�
 * 跌幅排序
 
 #### 2.2.4 数据库管理相关的教程
-* 哔哩哔哩搜“Python 数据库"，“Python sqlite”，“Python MySQL”
+* 哔哩哔哩搜[Python 数据库](https://search.bilibili.com/all?keyword=python%20%E6%95%B0%E6%8D%AE%E5%BA%93)，[Python sqlite](https://search.bilibili.com/all?keyword=python%20sqlite)
 * 排序会用到算法，参考[算法图解](https://weread.qq.com/web/reader/fbf32b80715c0184fbff41f)
 
 ### 2.3 GUI界面
@@ -68,7 +68,7 @@ spicy chicken是个独立的软件，点开以后图形界面展示菜单栏和�
 目前的 GUI 界面只有列表式展示。绘图式展示还没设想，暂时在基金代码上放链接，要能够呼出默认浏览器跳转打开天天基金的详情页。
 
 #### 2.3.4 GUI相关的教程
-哔哩哔哩搜“Python 图形开发”
+[哔哩哔哩搜“Python 图形开发”](https://search.bilibili.com/all?keyword=python%20%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%BC%80%E5%8F%91&from_source=webtop_search&spm_id_from=333.851)
 
 ## 3. 协作
 
@@ -79,12 +79,12 @@ spicy chicken是个独立的软件，点开以后图形界面展示菜单栏和�
 学完此 git 教程后，可以把 ssh 公钥文件发给 jayer.ltl@outlook.com，邮件标题注明“spicy_chicken：你的名字的公钥”。克隆项目地址，ssh方式：git@github.com:LiuTaolang/spicy_chicken.git
 
 ### 3.3 模块名称
-不同的模块使用不同的分支名称，最终合并到主分支（main）。开发相应模块的功能时，应将分支选中为对应的分支名称，以免错乱。
+不同的模块使用不同的分支名称，最终合并到主分支（main）。开发相应模块的功能时，先切换 checkout 到对应的分支，再 push 到远程仓库，以免错乱。
 * 网页爬取模块：scratch_web
 * 数据库管理模块：db_management
 * 图形界面：gui
 
-先切换 checkout 到对应的分支，再 push 到远程仓库。首次 push 到对应的模块，命令执行如下：
+首次 push 到对应的模块，命令执行如下：
 ```
 git push --set-upstream origin scratch_web #提交到网页爬取模块分支
 git push --set-upstream origin db_management #提交到数据管理模块分支
