@@ -52,8 +52,8 @@ for index, row in fund_list.iterrows():
     result['current/high'].append(current_price/high_price)
     result['current/low'].append(current_price/low_price)
     
-    if index == 5:
-        break
+    # if index == 5:
+    #     break
 
 df = pd.DataFrame.from_dict(result)
 df_sorted = df.sort_values(by='current/high', ascending=True)
