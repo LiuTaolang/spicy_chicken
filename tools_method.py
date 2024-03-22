@@ -20,7 +20,11 @@ def get_fund_list() -> pd.DataFrame:
     # 如果清单文件不是当天生成的，先更新再读取。
     if check_update(filename):
         temp_df = __update_fund_list(filename)
-        temp_df.to_json(filename)
+        try:
+            temp_df.to_json(filename)
+        except OSError:
+            os.mkdir(cache_path)
+            temp_df.to_json(filename)
     else:
         temp_df = pd.read_json(filename, dtype={'code': str})
     return temp_df
