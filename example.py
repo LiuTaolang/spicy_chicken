@@ -1,10 +1,12 @@
 import threading
+import time
 
 import pandas as pd
 
 import tools_method as tm
 from fund import Fund
 
+start_time = time.time()
 # 获取基金列表
 fund_list = tm.get_fund_list()
 
@@ -78,3 +80,6 @@ df_sorted = df.sort_values(by='current/high', ascending=True)
 
 # 保存到 CSV 文件
 df_sorted.to_csv('spicy_chicken.csv')
+
+end_time = time.time()
+print(f"耗时：{end_time - start_time}秒")
