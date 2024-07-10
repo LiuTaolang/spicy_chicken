@@ -25,17 +25,26 @@ result = {
     'low_price': [],
     'current/start': [],
     'current/high': [],
-    'current/low': []
+    'current/low': [],
+    'median_of_min_10%': [],
+    'current/min10%': [],
 }
 
 # 定义处理每行数据的函数
 def process_row(row, index, result):
     fund = Fund(row=row)
     df = fund.hfq_hist
+    # df = df.loc[df['日期'] >= '2019-01-01']
     first_row = df.head(1)
     last_row = df.tail(1)
     max_row = df[df[fund.high] == df[fund.high].max()]
     min_row = df[df[fund.low] == df[fund.low].min()]
+
+    # 获取最小 10% 的记录的平均数
+    sorted_df = df.sort_values(by=fund.low)
+    top_10_percent_count = int(len(sorted_df) * 0.01) + 1
+    top_10_percent_df = sorted_df.iloc[:top_10_percent_count]
+    median_of_top_10_percent = top_10_percent_df[fund.low].median()
 
     # 锁定字典以更新结果
     with lock:
@@ -53,6 +62,9 @@ def process_row(row, index, result):
         result['current/start'].append(last_row[fund.cls].iloc[0] / first_row[fund.cls].iloc[0])
         result['current/high'].append(last_row[fund.cls].iloc[0] / max_row[fund.high].iloc[0])
         result['current/low'].append(last_row[fund.cls].iloc[0] / min_row[fund.low].iloc[0])
+        result['median_of_min_10%'].append(median_of_top_10_percent)
+        result['current/min10%'].append(last_row[fund.cls].iloc[0] / median_of_top_10_percent)
+
 
 # 创建一个线程锁
 lock = threading.Lock()
